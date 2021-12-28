@@ -20,8 +20,8 @@
         <div class="col-md-4 col-md-offset-4">
             <h4>Login Here</h4>
             <hr>
-            <form action="">
-                
+            <form action="{{route('login-user')}}" method="post">
+                @csrf
                 <div class="form-group">
                     <label for="name">Email</label>
                     <input type="text" class="form-control" placeholder="Enter Email" name="name" value="">
