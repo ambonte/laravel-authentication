@@ -29,17 +29,17 @@
                 <div class="alert alert-danger">{{Session::get('fail')}}</div>
                 @endif
                 @csrf
-                
-                <div class="form-group">
+
+                 <div class="form-group">
                     <label for="name">Email</label>
-                    <input type="text" class="form-control" placeholder="Enter Email" name="name" value="{{old ('email')}}">
+                    <input type="text" class="form-control" placeholder="Enter Email" name="email" value="{{old('email')}}">
                     <span class="text-danger">@error('email'){{$message}} @enderror</span>
                  </div>
 
             
                  <div class="form-group">
                     <label for="password">Password</label>
-                    <input type="text" class="form-control" placeholder="Enter password" name="password" value="">
+                    <input type="text" class="form-control" placeholder="Enter password" name="password" value="{{old('password')}}">
                     <span class="text-danger">@error('password'){{$message}} @enderror</span>
                  </div>
 
