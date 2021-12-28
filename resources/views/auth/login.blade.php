@@ -21,16 +21,26 @@
             <h4>Login Here</h4>
             <hr>
             <form action="{{route('login-user')}}" method="post">
+                @if(Session::has('success'))
+                <div class="alert alert-success">{{Session::get('success')}}</div>
+                @endif
+
+                @if(Session::has('fail'))
+                <div class="alert alert-danger">{{Session::get('fail')}}</div>
+                @endif
                 @csrf
+                
                 <div class="form-group">
                     <label for="name">Email</label>
-                    <input type="text" class="form-control" placeholder="Enter Email" name="name" value="">
+                    <input type="text" class="form-control" placeholder="Enter Email" name="name" value="{{old ('email')}}">
+                    <span class="text-danger">@error('email'){{$message}} @enderror</span>
                  </div>
 
             
                  <div class="form-group">
                     <label for="password">Password</label>
                     <input type="text" class="form-control" placeholder="Enter password" name="password" value="">
+                    <span class="text-danger">@error('password'){{$message}} @enderror</span>
                  </div>
 
                  <div class="form-group">
