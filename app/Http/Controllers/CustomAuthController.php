@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Hash;
-use session;
+use Session;
 
 class CustomAuthController extends Controller
 {
@@ -55,8 +55,22 @@ class CustomAuthController extends Controller
             return back()->with('fail', 'This email is not registered');
         }
     }
-    public function dashboard(){
-        return view('dashboard');
+    public function dashboard()
+    {
+        $data = array();
+        if(Session::has('loginId')){
+            
+            $data = User::where('id','=',Session::get('loginId'))->first();
+        }
+        return view('dashboard',compact('data'));
+    }
+    
+
+    public function logout(){
+        if(Session::has('loginId')){
+            Session::pull('loginId');
+            return redirect('login');
+        }
     }
 
    
